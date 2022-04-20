@@ -33,4 +33,13 @@ app.get("/is-today-holiday", (req, res)=>{
     res.send("Não, hoje não é feriado")
 })
 
+app.get("/holidays/:month", (req,res)=>{
+    const month = req.params.month
+    let monthHolidays = []
+    for (let i of holidays){
+        if(i.date.split("/")[0] === month) monthHolidays.push(i)
+    }
+    res.send(monthHolidays)
+})
+
 app.listen(4000)
